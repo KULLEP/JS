@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Runner</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		
+    </head>
+	<body class="bg-dark">
+		
+        <!-- GAME INFO START D-NONE-->
+		<div id="game_block" class="d-block col-12 row justify-content-center">  
+			<div class="col-12 row justify-content-around">
+         
+                    <a id="btn_exit_game" class="btn btn-danger">
+                        <span class="h4">EXIT</span>
+                    </a>
+                 
+				<span class="h4 text-danger" id="score"></span>
+            </div> 
+			<div class="col-12 row justify-content-around mt-3">
+				<div class="col-6 row justify-content-center">
+                    <span class="h4 text-danger mr-3">Health <span id="hp_player" class="mr-3 text-danger">100</span></span>
+					<progress id="hp_player" class="h-75 bg-danger text-white" max="100" value="100"></progress>
+                </div>
+				
+				<div class="col-6 row justify-content-center">
+                    <span class="h4 text-info mr-3">Mana <span id="mp_player" class="mr-3 text-info">100</span></span>
+			 		<progress id="mp_player" class="h-75 bg-danger text-white" max="100" value="100"></progress>
+                </div>
+            </div>
+        </div>
+		<!-- GAME INFO END -->
+        
+        
+        
+        <!-- MENU START-->
+        <div id="menu_block" class="position-absolute col-12 row justify-content-center mt-5"> 
+			
+            <div class="rounded col-8 bg-light p-5 row justify-content-center">
+                <div class="col-12 row justify-content-center mb-5"> 
+                    <a id="btn_start_game" class="btn btn-success">
+                        <span class="h2">START</span>
+                    </a>
+                </div>
+                
+                <div class="col-12 row justify-content-center"> 
+                    <a id="btn_progress_game" class="btn btn-success">
+                        <span class="h2">Достижения</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- MENU END-->
+        
+        
+        <!-- PROGRESS GAME START-->
+        <div id="menu_block" class="d-none position-absolute col-12 row justify-content-center mt-5"> 
+			
+            <div class="rounded col-8 bg-light p-5 row justify-content-center">
+                <div class="col-12 row justify-content-center mb-5"> 
+                    <a id="btn_start_game" class="btn btn-success">
+                        <span class="h2">START</span>
+                    </a>
+                </div>
+                
+                <div class="col-12 row justify-content-center"> 
+                    <a id="btn_progress_game" class="btn btn-success">
+                        <span class="h2">Достижения</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- PROGRESS GAME END-->
+        
+        
+        <!-- GAME START    D-NONE -->
+		<div id="game_canvas" class="d-block col-12 row justify-content-center mt-2"> 
+            <div class="col-12 row justify-content-center"> 
+                <canvas class="border-danger border" id="canvas" width="1024" height="512"></canvas>
+            </div>
+        </div>
+        <!-- GAME END-->
+        
+        <script src="functions.js"></script>
+		<script src="_js.js"></script>
+        <script src="player.js"></script>
+        <script src="btn_event.js"></script>
+         
+         
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
