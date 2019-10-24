@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title id='money_block_title'>0</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		
+		
+		<style>
+			
+			
+			
+			* {
+			-webkit-user-select: none;
+			/* user-select -- это нестандартное свойство */
+			-moz-user-select: none;
+			/* поэтому нужны префиксы */
+			-ms-user-select: none;
+			}
+			
+			#height-shop_vh{
+			height:60vh!important;
+			overflow-y: scroll; /* Добавляем полосы прокрутки */
+			}
+			
+		</style>
+		
+		
+	</head>
+	
+	<!-- КЛИК -->
+	<audio src="sound/b2.ogg" id="audio_click"></audio>
+	<!-- Покупка -->
+	<audio src="sound/b2.ogg" id="audio_shop"></audio>
+	<!-- Удар по боссу -->
+	<audio src="sound/b2.ogg" id="audio_click_boss"></audio>
+	
+	
+	<body oncopy="return false;" class="col-12 row justify-content-center bg-white m-0 p-0">
+		
+		
+		
+		
+		<!-- BOSS START d-none-->
+		<div style="z-index:1000;" class="d-none position-absolute col-12 row justify-content-center m-0 p-0 ">
+			<div id="boss_element_id" class="bg-success col-12 row justify-content-center ">
+				
+				<div class="col-4 bg-danger rounded">
+					<div class="col-12">
+						<span>BOSS</span>
+						<div>
+							<progress id="hp_boss" class="  bg-danger text-white" max="100" value="1"></progress>
+						</div>
+						<a id="kick_boss" class="bg-info row justify-content-center col-12">
+							<img class="img-game border-0 bg-transparent row justify-content-center col-12" src="img/tree.png">
+							<div>
+								KICK
+							</div>
+						</a>
+						<span id="hp_boss_text"></span>% HP
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			
+			<div id="boss_win_id" class="d-none py-5 row bg-success col-12 row justify-content-center bg-danger rounded">
+				
+				<div class="row justify-content-center col-12">
+					<p class="py-3 bg-dark row justify-content-center col-4 h3 text-info">WIN</p>
+				</div>
+				<div class="row justify-content-center col-12">
+					<p class="py-3 bg-dark row justify-content-center col-4 h3 text-info">BOSS IS DEAD</p>
+				</div>
+				
+			</div>
+		</div>
+		<!-- BOSS END -->
+		
+		
+		
+		<div class="p-0 mx-0 mt-5 col-12 row justify-content-around">
+			
+			<div class="bg-warning a-no-touch py-1 row justify-content-around col-12">
+				
+				<div class="p-0 col-3">
+					<input class="mb-5 py-0 px-1 btn btn-outline-info my-2 my-sm-0"  type="submit" name="save_result_balls" value="Сохранить результат" />
+					
+					<div class="h-50 h5 p-1 mt-5 bg-dark text-danger rounded">
+						<p>	</p>
+						<div class="h-25 d-none h2 text-warning  " id="bonus_x_text"></div>
+					</div>
+					
+				</div>
+				
+				
+				<div class="p-0 bg-info col-4">
+					<div class="h5 p-1 mt-5 text-danger rounded">
+						<p>Времени до следующего босса</p>
+						<p>Награда за босса - 10 000 $</p>
+					</div>
+					
+				</div>
+				
+				
+				
+				<div class="p-0 a-no-touch rounded bg-danger row justify-content-center col-4 mb-3">
+					<div class="h4 col-12 row justify-content-center ">
+						<span class="col-3"id="money_block">0</span>&nbsp;<span class="p-0 m-0 col-8"> Money</span>
+					</div>
+					
+					<div class="h4 col-12 row justify-content-center ">
+						<span class="col-3"id="money_second_block">0</span>&nbsp;<span class="p-0 m-0 col-8"> Money in second</span>
+					</div>
+					
+					<div class="h4 col-12 row justify-content-center ">
+						<span class="col-3"id="money_click_block">0</span>&nbsp;<span class="p-0 m-0 col-8"> Money click</span>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+			
+			<div class="bg-dark py-3 col-12 row justify-content-around">
+				
+				<!-- TOUCH START-->
+				<div class="height-100-vh rounded bg-info col-3 m-0 p-0"> 
+					<div class="a-no-touch rounded row justify-content-center col-12 m-0 p-3">
+						<p class="h5 text-danger bg-dark rounded py-1 px-2 my-2 ">Ломай лицо дереву</p>
+						
+						<div class="border-top border-dark row justify-content-center p-0 text-white col-12">
+							<div class="p-0 my-5 row justify-content-center col-12">
+								<a id="cookie_click" class="p-0 row justify-content-center col-12">
+								<img class="p-0 img-game border-0 bg-transparent row justify-content-center col-12" src="img/tree.png"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- TOUCH END-->
+				
+				
+				
+			
+			<!-- CLICKERS START-->
+			<div id="height-shop_vh" class="a-no-touch h-100 rounded bg-success col-4 m-0 p-0"> 
+			<div class="a-no-touch rounded row justify-content-center col-12 m-0 p-0"> 
+			<p class="h5 text-danger bg-dark rounded py-1 px-2 my-2 ">Магазин игрушек для взрослых</p>
+			<div class="border-top border-dark row justify-content-center p-3 text-white col-12">
+			
+			
+			
+			
+			<div class="a-no-touch col-8 row justify-content-center">
+			<a id="buy_click_price_1"  class="a-no-touch col-8">
+			<img class="bg-white rounded-top p-0 col-12" src="img/mini_knife.png">
+			<p class="m-0 bg-info col-12">Click + 1</p>
+			<p id="click_price_1_mini_knife_text" class="rounded-bottom bg-dark col-12"></p>
+			</a>
+			</div>
+			
+			<div class="a-no-touch col-8 row justify-content-center">
+			<a onclick="buy_click_2();return false;" class="a-no-touch col-8">
+			<img class="bg-white rounded-top p-0 col-12" src="img/knife.png">
+			<p class="m-0 bg-info col-12">Click + 5</p>
+			<p id="click_price_2_knife_text" class="rounded-bottom bg-dark col-12"></p>
+			</a>
+			</div>
+			
+			<div class="a-no-touch col-8 row justify-content-center">
+			<a onclick="buy_click_3();return false;" class="a-no-touch col-8">
+			<img class="bg-white rounded-top p-0 col-12" src="img/big_knife.jpg">
+			<p class="m-0 bg-info col-12">Click + 100</p>
+			<p id="click_price_3_big_knife_text" class="rounded-bottom bg-dark col-12"></p>
+			</a>
+			</div>
+			
+			
+			<div class="a-no-touch col-8 row justify-content-center">
+			<a onclick="buy_click_3();return false;" class="a-no-touch col-8">
+			<img class="bg-white rounded-top p-0 col-12" src="img/axe.png">
+			<p class="m-0 bg-info col-12">Click + 500</p>
+			<p id="click_price_4_axe_text" class="rounded-bottom bg-dark col-12"></p>
+			</a>
+			</div>
+			
+			
+			<div class="a-no-touch col-8 row justify-content-center">
+			<a onclick="buy_click_3();return false;" class="a-no-touch col-8">
+			<img class="bg-white rounded-top p-0 col-12" src="img/chainsaw.svg">
+			<p class="m-0 bg-info col-12">Click + 1000</p>
+			<p id="click_price_5_chainsaw_text" class="rounded-bottom bg-dark col-12"></p>
+			</a>
+			</div>
+			
+			
+			</div>
+			</div>
+			</div>
+			<!-- CLICKERS END-->
+			
+			
+			<!-- SECOND START-->
+			<div id="height-shop_vh" class="h-100 rounded bg-danger col-4 m-0 p-0"> 
+			<div class="a-no-touch rounded row justify-content-center col-12 m-0 p-0"> 
+			<p class="h5 text-danger bg-dark rounded py-1 px-2 my-2 ">Магазин рабов</p>
+			<div class="border-top border-dark row justify-content-center p-3 text-white col-12">
+			
+			
+			
+			<div class="col-8 row justify-content-center">
+			<a onclick="buy_second_1();return false;" class="a-no-touch col-12">
+			<img class="rounded-top p-0 col-12" src="img/auto_clicker_axe.jpg">
+			<p class="m-0 bg-info col-12">Click/second + 1</p>
+			<p class="rounded-bottom bg-dark col-12">20 $</p>
+			</a>
+			</div>
+			
+			
+			
+			
+			</div>
+			</div>
+			</div>
+			<!-- SECOND END-->
+			</div>
+			
+			
+			
+			</div>
+			
+			
+			
+			<script src="_js/cookie.js"></script>
+			
+			
+			</body>
+			</html>																																																												

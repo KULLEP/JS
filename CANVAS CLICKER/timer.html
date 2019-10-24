@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Panda Hub</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		
+		<style>
+		a {
+		cursor: pointer; 
+		-moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+		}
+		
+		</style>
+		
+		
+	</head>
+	
+	
+	<body class="bg-dark">
+		<div class="mt-5 col-12 row justify-content-center">
+			
+			
+
+<div class="container">
+    <section id="timer">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 countdown-wrapper text-center mb20">
+                <div class="card">
+                    <div class="card-block">
+    	                <div id="countdown">
+            	            <div class="well">
+                        	    <span id="hour" class="timer bg-success"></span>
+                        	    <span id="min" class="timer bg-info"></span>
+                        	    <span id="sec" class="timer bg-primary"></span>
+                        	</div>
+                    	</div>
+                    </div>
+                </div>
+    	    </div>
+    	</div>
+    </section>
+</div>
+
+
+
+<script>
+	
+	
+	$( document ).ready(function() {
+  setInterval(function time(){
+  var d = new Date();
+  var hours = 24 - d.getHours();
+  var min = 60 - d.getMinutes();
+  if((min + '').length == 1){
+    min = '0' + min;
+  }
+  var sec = 60 - d.getSeconds();
+  if((sec + '').length == 1){
+        sec = '0' + sec;
+  }
+  jQuery('#countdown #hour').html(hours);
+  jQuery('#countdown #min').html(min);
+  jQuery('#countdown #sec').html(sec);
+}, 1000); });
+</script>
+			
+		</div>
+	 
+		
+	</body>
+</html>
