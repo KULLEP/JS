@@ -99,6 +99,17 @@ function enemy(enemy_obj, speed, damage, impulse, image, gravity_obj, is_fly)
 
 
 
+function game_stop()
+{
+    
+    
+    
+    
+}
+
+
+
+
 
 
 
