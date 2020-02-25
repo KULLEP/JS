@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse</title>
+  </head>
 	
-	<body>
+  <body>
+   <main>
+     <input type="text" id="numberI">
+     <div id="result"></div>
+   </main>
+
+ <script src="main.js">
  
-		<main>
-		 	<input type="text" id="numberI">
+   revSt = (str) => {
+   return str.split('').reverse().join('');
+   }
+   document.getElementById('numberI').addEventListener('input',  (e) => {	 
+   let strIm = e.target.value;
+   document.getElementById('result').innerHTML = revSt(strIm);
+   });
+   
+  </script>
 
-      <div id="result"></div>
-
-<script>
-
-revSt = (str) => {
-	return str.split('').reverse().join('');
-}
-
-document.getElementById('numberI').addEventListener('input',  (e) => {
-	 
-	 let strIm = e.target.value;
-	document.getElementById('result').innerHTML = revSt(strIm);
-});
-
-</script>
-
-</main>
-	</body>
+   </body>
 </html>													
